@@ -15,7 +15,7 @@ async function vizualizarInformacoesGlobais() {
     paragrafo.classList.add('graficos-container__texto')
     paragrafo.innerHTML = `
     Você sabia que a escola possui aproximadamente <span style="color: ${corAleatoria};">2.000 alunos</span>? Dentre esses, cerca de <span style="color: ${corAleatoria};">${alunosConectados} alunos</span> estão ativos em redes sociais. <br>
-    Em média, cada aluno dedica cerca de <span style="color: ${corAleatoria};">${horas} horas</span> e <span style="color: ${corAleatoria};">${minutos} minutos</span> por dia navegando nessas plataformas. <br>
+    Em média, cada aluno gasta aproximadamente <span style="color: ${corAleatoria};">${horas} horas</span> e <span style="color: ${corAleatoria};">${minutos} minutos</span> por dia navegando nessas plataformas. <br>
     Isso representa aproximadamente <span style="color: ${corAleatoria};">${porcentagemConectada}%</span> dos alunos da escola conectados às redes sociais.
 `;
 

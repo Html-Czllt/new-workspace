@@ -6,7 +6,7 @@
   
   :root {
     --bg-color: #F5F5F5; /* Fundo branco fosco */
-    --text-color: #555555; /* Texto cinza suave */
+    --text-color: #292929; /* Texto cinza suave */
     --highlight-color: #000000; /* Preto */
     --highlight-hover: #000000; /* Preto para hover */
   }
@@ -14,7 +14,7 @@
   body {
     background-color: var(--bg-color); /* Fundo branco fosco */
     color: var(--text-color); /* Texto cinza suave */
-    font-family: 'Nunito Sans', sans-serif; /* Fonte 'Nunito Sans' */
+    font-family: 'Nunito    Sans', sans-serif; /* Fonte 'Nunito Sans' */
     height: 100vh;
   }
   

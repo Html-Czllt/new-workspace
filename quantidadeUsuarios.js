@@ -21,12 +21,12 @@ async function quantidadeUsuariosPorRede() {
                 y: quantidadeDeUsuarios,
                 type: 'bar',
                 marker: {
-                    color: cores // Usando as cores definidas
+                    color: cores //// Usando as cores definidas ////
                 }
             }
         ];
 
-        // Gráfico de Pizza
+      //  // Gráfico de Pizza ////
         const dataPizza = [
             {
                 labels: nomeDasRedes,
@@ -36,7 +36,7 @@ async function quantidadeUsuariosPorRede() {
                 insidetextorientation: 'horizontal',
                 textposition: 'inside',
                 marker: {
-                    colors: cores // Usando as mesmas cores
+                    colors: cores //// Usando as mesmas cores ////
                 },
                 hoverinfo: 'label+percent',
             }
@@ -61,11 +61,11 @@ async function quantidadeUsuariosPorRede() {
         const graficoPizza = document.createElement('div');
         graficoPizza.className = 'grafico';
         graficoPizza.style.display = 'flex';
-        graficoPizza.style.justifyContent = 'center'; // Centraliza o gráfico
+        graficoPizza.style.justifyContent = 'center'; //// Centraliza o gráfico ////
         document.getElementById('graficos-container').appendChild(graficoPizza);
         Plotly.newPlot(graficoPizza, dataPizza, layoutPizza);
 
-        // Layout do Gráfico de Barras
+       // // Layout do Gráfico de Barras ////
         const layoutBarra = {
             plot_bgcolor: getCSS('--bg-color'),
             paper_bgcolor: getCSS('--bg-color'),
@@ -80,7 +80,7 @@ async function quantidadeUsuariosPorRede() {
             xaxis: {
                 tickfont: tickConfig,
                 title: {
-                    text: 'Nome das redes',
+                    text: 'Nome das redes sociais',
                     font: {
                         color: getCSS('--highlight-color')
                     }
@@ -89,7 +89,7 @@ async function quantidadeUsuariosPorRede() {
             yaxis: {
                 tickfont: tickConfig,
                 title: {
-                    text: 'Número de usuários',
+                    text: 'Número de usuários   ',
                     font: {
                         color: getCSS('--highlight-color')
                     }

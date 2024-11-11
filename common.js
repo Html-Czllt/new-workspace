@@ -12,3 +12,7 @@ const tickConfig = {
 }
 
 export {getCSS, tickConfig}
+
+const config = {
+    displayModeBar: false
+}

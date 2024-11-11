@@ -1,33 +1,50 @@
 import { getCSS, tickConfig } from "./common.js";
 
 async function quantidadeUsuariosPorRede() {
-    // Dados fictícios dos usuários na escola, incluindo YouTube
+    // Dados ajustados para a escola com 1509 alunos, baseados em estimativas para Curitiba
     const dadosEscola = {
-        "Facebook": 500,
-        "Instagram": 1800,
-        "Twitter": 900,
-        "TikTok": 1400,
-        "WhatsApp": 1900,
-        "YouTube": 1200,
-    }
+        "Facebook": 400,     // Uso ainda significativo entre algumas faixas etárias
+        "Instagram": 1100,   // Muito popular, especialmente entre os mais jovens
+        "Twitter": 350,      // Menos popular, mas com um público fiel
+        "TikTok": 800,       // Crescimento rápido, especialmente entre adolescentes
+        "WhatsApp": 1400,    // Extremamente popular para comunicação entre amigos e familiares
+        "YouTube": 1000,     // Plataforma muito usada, especialmente para vídeos e educação
+    };
+
+    const totalAlunos = 1509;
+    const alunosConectados = 1506;  // Agora estamos considerando que 1506 alunos estão conectados
+    const horas = 4;                // Exemplo de horas
+    const minutos = 30;             // Exemplo de minutos
+
+    // Calcular a porcentagem de alunos conectados
+    const porcentagemConectada = (alunosConectados / totalAlunos) * 100; // Percentual de alunos conectados
+
+    // Limitar o número de usuários em cada rede social para o máximo de 1509 (número total de alunos)
+    Object.keys(dadosEscola).forEach(key => {
+        if (dadosEscola[key] > totalAlunos) {
+            dadosEscola[key] = totalAlunos;  // Garantir que nenhuma rede tenha mais de 1509 usuários
+        }
+    });
 
     // Ordenar os dados pela quantidade de usuários em ordem decrescente
     const ordenados = Object.entries(dadosEscola).sort((a, b) => b[1] - a[1]);
     const nomeDasRedes = ordenados.map(item => item[0]);
     const quantidadeDeUsuarios = ordenados.map(item => item[1]);
 
+    // Definindo a cor para destacar
+    const highlightColor = getCSS('--highlight-color');  // Usando a cor definida em CSS
+
     // Adicionar texto explicativo
-    const textoExplicativo = document.createElement('p');
-    textoExplicativo.classList.add('graficos-container__texto');
-    textoExplicativo.innerHTML = `
-        Você sabia que a nossa escola possui aproximadamente <span style="font-weight: bold; color: ${getCSS('--secondary-color')}">1.950 alunos?</span>
-        Aproximadamente <span style="font-weight: bold; color: ${getCSS('--secondary-color')}">1.920 estudantes</span> estão conectados em alguma rede social e, em média, passam cerca de <span style="font-weight: bold; color: ${getCSS('--secondary-color')}">4 horas</span> por dia nessas plataformas. Isso significa que uma grande parte dos alunos está ativa nas redes sociais.
-        <br><br>
-        Abaixo, você pode ver o gráfico que mostra as redes sociais mais utilizadas entre nossos alunos.
+    const paragrafo = document.createElement('p');
+    paragrafo.classList.add('graficos-container__texto');
+    paragrafo.innerHTML = `
+        Você sabia que a escola possui exatamente <span style="color: ${highlightColor};">1.509 alunos</span>? Dentre esses, cerca de <span style="color: ${highlightColor};">${alunosConectados}</span> alunos estão ativos em redes sociais. <br>
+        Em média, cada aluno gasta aproximadamente <span style="color: ${highlightColor};">${horas} horas</span> e <span style="color: ${highlightColor};">${minutos} minutos</span> por dia navegando nessas plataformas. <br>
+        Isso representa aproximadamente <span style="color: ${highlightColor};">${porcentagemConectada.toFixed(2)}%</span> dos alunos da escola conectados às redes sociais.
     `;
 
     const container = document.getElementById('graficos-container');
-    container.appendChild(textoExplicativo);
+    container.appendChild(paragrafo);
 
     // Gráfico de Pizza
     const dataPizza = [
@@ -109,7 +126,7 @@ async function quantidadeUsuariosPorRede() {
                     color: getCSS('--secondary-color')
                 }
             },
-            range: [0, 2000] // Definindo o range do eixo Y para ir de 0 a 2000
+            range: [0, totalAlunos] // Definindo o range do eixo Y para ir de 0 ao total de alunos
         }
     };
 
